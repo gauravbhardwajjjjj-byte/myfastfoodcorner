@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast Food Corner | Contact Us</title>
+
+  <style>
+    /* ----------- GLOBAL RESET ----------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #fff5f0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ----------- HEADER ----------- */
+    header {
+      background: #ff3131;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      font-weight:bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffeaa7;
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #ff3131;
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .mobile-menu a {
+      color: white;
+      font-weight: bold;
+      padding: 10px 0;
+      display: block;
+    }
+
+    /* ----------- HERO SECTION ----------- */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+    }
+
+    /* ----------- CONTACT SECTION ----------- */
+    .contact-section {
+      padding: 60px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .contact-card {
+      flex: 1 1 400px;
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .contact-card h2 {
+      color: #ff3131;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .contact-card p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .contact-card i {
+      color: #ff3131;
+      margin-right: 10px;
+    }
+
+    /* ----------- FORM STYLES ----------- */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input, form textarea {
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #ff3131;
+      box-shadow: 0 0 8px rgba(255,49,49,0.3);
+      outline: none;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      padding: 12px 25px;
+      background: #ff3131;
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ----------- MID-PAGE IMAGE SECTION ----------- */
+    .mid-image {
+      margin: 60px auto;
+      width: 90%;
+      max-width: 1200px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .mid-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .mid-image img:hover {
+      transform: scale(1.05);
+    }
+
+    
+
+    /* ----------- RESPONSIVE DESIGN ----------- */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .mid-image img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">🍔 Fast Food Corner</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="deal.html">Deals</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="deal.html">Deals</a>
+    <a href="contactus.html">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Contact Us</h1>
+      <p>We’d love to hear from you! Orders, feedback, or collaborations.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+
+    <!-- Contact Info -->
+    <div class="contact-card">
+      <h2>Get in Touch</h2>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Fast Food Street, Food City</p>
+      <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+      <p><i class="fas fa-envelope"></i> contact@fastfoodcorner.com</p>
+      <p>We reply fast! Send us your message and we’ll get back to you soon.</p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-card">
+      <h2>Send a Message</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Subject" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- Mid-page Image -->
+  <div class="mid-image">
+    <img src="https://img.freepik.com/premium-photo/photo-fast-food-black-background-generated-by-ai_551405-1903.jpg" alt="Delicious Fast Food">
+  </div>
+
+  
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+
+</body>
+</html>
