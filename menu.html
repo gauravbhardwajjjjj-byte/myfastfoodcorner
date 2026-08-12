@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fast Food Corner | Menu</title>
+
+  <style>
+    /* ----------- GLOBAL RESET ----------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #fff8f0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ----------- HEADER ----------- */
+    header {
+      background: #ff3131;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      font-weight:bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffeaa7;
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #ff3131;
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .mobile-menu a {
+      color: white;
+      font-weight: bold;
+      padding: 10px 0;
+      display: block;
+    }
+
+    /* ----------- MENU SECTION ----------- */
+    .menu {
+      text-align: center;
+      padding: 80px 10%;
+    }
+
+    .menu h1 {
+      color: #ff3131;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .menu h1::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #ff3131;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 35px;
+      margin-bottom: 60px;
+    }
+
+    .menu-item {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 15px 15px 0 0;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .menu-item-content {
+      padding: 15px;
+    }
+
+    .menu-item h3 {
+      color: #ff3131;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .menu-item p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #ff6666;
+      font-size: 1.1rem;
+    }
+
+   
+
+    /* ----------- RESPONSIVE DESIGN ----------- */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .menu h1 {
+        font-size: 2rem;
+      }
+
+      .menu-item img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">🍔 Fast Food Corner</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="deal.html">Deals</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="deal.html">Deals</a>
+    <a href="contactus.html">Contact</a>
+  </div>
+
+  <!-- Menu Section -->
+  <section class="menu">
+    <h1>Our Delicious Menu</h1>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://img.freepik.com/premium-photo/delicious-cheese-burger-background_623665-1436.jpg" alt="Cheese Burger">
+        <div class="menu-item-content">
+          <h3>Cheese Burger</h3>
+          <p>A golden-crisp veg tikki layered with melting cheese, fresh veggies, and zesty sauces inside a soft bun.</p>
+          <div class="price">₹50</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://downtownpizza.in/wp-content/uploads/2022/04/tpc3_640x.webp" alt="Delicious Pizza">
+        <div class="menu-item-content">
+          <h3>Delicious Pizza</h3>
+          <p>Crispy crust, gooey cheese, and flavorful toppings in every bite.</p>
+          <div class="price">₹300</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://img.freepik.com/premium-photo/juicy-steamed-chicken-momos-momos-dumplings-image-photography_1020697-137342.jpg" alt="Steamed momos">
+        <div class="menu-item-content">
+          <h3>Steamed momos</h3>
+          <p>Soft, juicy dumplings with flavorful fillings, served with spicy dipping sauce.</p>
+          <div class="price">₹50</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://png.pngtree.com/background/20230528/original/pngtree-bowl-filled-with-a-dish-of-noodles-with-vegetables-picture-image_2779859.jpg" alt="Veg Chowmein">
+        <div class="menu-item-content">
+          <h3>Veg Chowmein</h3>
+          <p>Flavorful stir-fried noodles with fresh vegetables and savory sauces.</p>
+          <div class="price">₹50</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://static.vecteezy.com/system/resources/previews/030/625/459/large_2x/photorealistic-product-shot-foodgraphy-ziti-free-photo.jpg" alt="Veg Pasta">
+        <div class="menu-item-content">
+          <h3>Veg Pasta</h3>
+          <p>Colorful pasta tossed with fresh vegetables and savory sauces.</p>
+          <div class="price">₹50</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://d3cm4d6rq8ed33.cloudfront.net/media/navpravartakfiles/19/aee0667a-3cdd-4ff9-9483-e5e39e50a055.jpg" alt="Chilli momos">
+        <div class="menu-item-content">
+          <h3>Chilli momos</h3>
+          <p>Juicy dumplings tossed in spicy and tangy sauces.</p>
+          <div class="price">₹80</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://c4.wallpaperflare.com/wallpaper/666/302/422/food-potato-french-fries-hd-wallpaper-preview.jpg" alt="Crispy Fries">
+        <div class="menu-item-content">
+          <h3>Crispy Fries</h3>
+          <p>Golden, crunchy fries with a pinch of salt and love.</p>
+          <div class="price">₹120</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://i.ytimg.com/vi/DkZR9sgwm8E/maxresdefault.jpg" alt="Veg Manchurian">
+        <div class="menu-item-content">
+          <h3>Veg Manchurian</h3>
+          <p>Crispy vegetable balls cooked in a spicy, tangy, and savory sauce.</p>
+          <div class="price">₹100</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://insanelygoodrecipes.com/wp-content/uploads/2024/12/Lava-Cake-5.jpg" alt="Chocolate lava Cake">
+        <div class="menu-item-content">
+          <h3>Chocolate lava Cake</h3>
+          <p>Rich, molten-centered dessert with a gooey chocolate core inside a soft cake shell.</p>
+          <div class="price">₹50</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Mobile Menu Script -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
