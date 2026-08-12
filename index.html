@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fast Food Corner</title>
+
+  <style>
+    /* ----------- Global Reset ----------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #fff8f0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ----------- Header ----------- */
+    header {
+      background-color: #ff3131;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffeaa7;
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #ff3131;
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .mobile-menu a {
+      color: white;
+      font-weight: bold;
+      padding: 10px 0;
+      display: block;
+    }
+
+    /* ----------- Hero Section ----------- */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 60px 10%;
+      background: linear-gradient(120deg, #ffb84d, #ff6666);
+      color: white;
+    }
+
+    .hero-text {
+      flex: 1 1 350px;
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background-color: white;
+      color: #ff3131;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffeaa7;
+    }
+
+    .hero img {
+      flex: 1 1 350px;
+      width: 100%;
+      max-width: 450px;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ----------- Menu Section ----------- */
+    .menu-section {
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .menu-section h2 {
+      font-size: 2.5rem;
+      color: #ff3131;
+      margin-bottom: 40px;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-item {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+      overflow: hidden;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      margin: 10px 0;
+      color: #ff3131;
+    }
+
+    .menu-item p {
+      color: #666;
+      padding: 0 15px 15px;
+    }
+
+    /* ----------- Responsive Design ----------- */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+    }
+	img {
+  background-color: #fff8f0;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">🍔 Fast Food Corner</div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="deal.html">Deals</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger Icon -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="deal.html">Deals</a>
+    <a href="contactus.html">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Delicious Fast Food, Freshly Made Every Day</h1>
+      <p>Craving something amazing? Enjoy juicy burgers, cheesy pizzas, and crispy momos served hot!</p>
+      <a href="#" class="btn">Order Now</a>
+    </div>
+
+    <img
+      src="https://i.pinimg.com/originals/91/b3/dc/91b3dcc8a386e5bffdd9b92c1d7ce14f.png"
+      alt="Food Combo"
+    />
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu-section">
+    <h2>Our Popular Picks</h2>
+
+    <div class="menu-items">
+      <div class="menu-item">
+        <img src="https://png.pngtree.com/thumb_back/fw800/background/20241224/pngtree-exploding-burger-with-vegetables-image_16862207.jpg" alt="Burger">
+        <h3>Cheese Burger</h3>
+        <p>Juicy beef patty with melted cheese and fresh veggies.</p>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://img.freepik.com/premium-photo/delicious-pizza-images_224362-244.jpg" alt="Pizza">
+        <h3>Delicious Pizza</h3>
+        <p>Classic Italian crust topped with spicy pepperoni and cheese.</p>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://static.india.com/wp-content/uploads/2024/08/FEATURE-IMAGE-54-1.jpg" alt="Momos">
+        <h3>Crispy Momos</h3>
+        <p>Golden, crunchy, and perfectly seasoned momos you can't resist.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      let menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
